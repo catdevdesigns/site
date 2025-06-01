@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fancy Blue & Black Website</title>
+  <style>
+    @font-face {
+      font-family: 'GothamPro', sans-serif;
+      src: local('Gotham'), local('Gotham Pro'), local('Arial Black'), local('Arial Bold'), local('Arial'), local('Helvetica Neue'), sans-serif;
+    }
+    body {
+      margin: 0;
+      font-family: 'GothamPro', Arial, Helvetica, sans-serif;
+      background-color: #000000;
+      color: #0ea5e9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(90deg, #000428, #004e92);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      width: 60px;
+      height: 60px;
+      background-color: #0ea5e9;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #000;
+      font-size: 24px;
+      user-select: none;
+    }
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 30px;
+    }
+    nav a {
+      color: #0ea5e9;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #38bdf8;
+    }
+    main {
+      flex-grow: 1;
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 700px;
+    }
+    footer {
+      background: #000428;
+      color: #0ea5e9;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">LOGO</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contacts</a> <!-- New button added here -->
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Welcome to Your Fancy Blue & Black Site</h1>
+    <p>This is a stylish template designed with a Gotham-like font and a blue & black color scheme. Replace the logo placeholder with your actual logo when ready.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Your Company Name. All rights reserved.
+  </footer>
+</body>
+</html>

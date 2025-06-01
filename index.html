@@ -2,33 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fancy Blue & Black Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CatDev Designs</title>
   <style>
     @font-face {
       font-family: 'GothamPro', sans-serif;
-      src: local('Gotham'), local('Gotham Pro'), local('Arial Black'), local('Arial Bold'), local('Arial'), local('Helvetica Neue'), sans-serif;
+      src: local('Gotham'), local('Gotham Pro'), local('Arial Black'), sans-serif;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: 'GothamPro', Arial, Helvetica, sans-serif;
-      background-color: #000000;
-      color: #0ea5e9;
+      font-family: 'GothamPro', Arial, sans-serif;
+      background-color: #000;
+      color: #00bfff;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+
     header {
-      background: linear-gradient(90deg, #000428, #004e92);
+      background: linear-gradient(90deg, #000428, #0077ff);
       padding: 20px 40px;
       display: flex;
       align-items: center;
       gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     .logo {
       width: 60px;
       height: 60px;
-      background-color: #0ea5e9;
+      background-color: #00bfff;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -38,41 +48,74 @@
       font-size: 24px;
       user-select: none;
     }
+
     nav {
       margin-left: auto;
       display: flex;
       gap: 30px;
     }
+
     nav a {
-      color: #0ea5e9;
+      color: #00bfff;
       text-decoration: none;
       font-weight: 600;
       font-size: 1.1rem;
+      position: relative;
       transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #38bdf8;
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -5px;
+      background: #00ffff;
+      transition: 0.3s;
     }
+
+    nav a:hover {
+      color: #00ffff;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
     main {
       flex-grow: 1;
       padding: 60px 40px;
       max-width: 1200px;
       margin: 0 auto;
     }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid #111;
+    }
+
     h1 {
       font-weight: 900;
       font-size: 3rem;
       margin-bottom: 20px;
-      color: #38bdf8;
+      color: #00ffff;
     }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
     p {
       font-size: 1.2rem;
       line-height: 1.6;
       max-width: 700px;
     }
+
     footer {
       background: #000428;
-      color: #0ea5e9;
+      color: #00bfff;
       text-align: center;
       padding: 15px 0;
       font-size: 0.9rem;
@@ -82,23 +125,45 @@
 </head>
 <body>
   <header>
-    <div class="logo">LOGO</div>
+    <div class="logo">CD</div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contacts</a> <!-- New button added here -->
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contacts">Contacts</a>
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
     </nav>
   </header>
 
   <main>
-    <h1>Welcome to Your Fancy Blue & Black Site</h1>
-    <p>This is a stylish template designed with a Gotham-like font and a blue & black color scheme. Replace the logo placeholder with your actual logo when ready.</p>
+    <section id="home">
+      <h1>Welcome to CatDev Designs</h1>
+      <p>At CatDev Designs, we craft sleek, modern websites and digital solutions that help your brand stand out. Our creative team is passionate about transforming ideas into beautiful, functional designs that captivate your audience.</p>
+    </section>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <p>CatDev Designs is a team of creative thinkers and problem solvers dedicated to building digital experiences that inspire and engage. We believe in clean code, elegant design, and delivering excellence every time.</p>
+    </section>
+
+    <section id="contacts">
+      <h2>Contact Us</h2>
+      <p>Need a stunning website or digital solution? Get in touch with us today and let's make your vision a reality.</p>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <p>We offer website design, branding, UI/UX, and development services tailored to meet your unique needs. Whether you’re starting from scratch or need a redesign, we’ve got you covered.</p>
+    </section>
+
+    <section id="team">
+      <h2>Meet the Team</h2>
+      <p>Our team of experts is ready to bring your ideas to life with creativity, passion, and attention to detail.</p>
+    </section>
   </main>
 
   <footer>
-    &copy; 2025 Your Company Name. All rights reserved.
+    &copy; 2025 CatDev Designs. All rights reserved.
   </footer>
 </body>
 </html>

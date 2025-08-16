@@ -15,15 +15,15 @@
     body {
       margin: 0;
       font-family: 'GothamPro', Arial, sans-serif;
-      background-color: #000;
-      color: #00bfff;
+      background-color: #f0f4ff;
+      color: #004a99;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      scroll-padding-top: 80px; /* for sticky header offset */
+      scroll-padding-top: 80px; /* sticky header offset */
     }
     header {
-      background: linear-gradient(90deg, #000428, #0077ff);
+      background: linear-gradient(90deg, #00509e, #3b82f6);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -31,7 +31,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
     }
     .logo {
       height: 60px;
@@ -39,7 +39,7 @@
       object-fit: contain;
       border-radius: 50%;
       background: none;
-      filter: drop-shadow(0 0 4px #00bfff);
+      filter: drop-shadow(0 0 4px #3b82f6);
       cursor: pointer;
       transition: transform 0.3s ease;
     }
@@ -53,7 +53,7 @@
       flex-wrap: wrap;
     }
     nav a {
-      color: #00bfff;
+      color: #cbe4ff;
       text-decoration: none;
       font-weight: 600;
       font-size: 1.1rem;
@@ -67,12 +67,12 @@
       height: 2px;
       left: 0;
       bottom: -5px;
-      background: #00ffff;
+      background: #a2cffe;
       transition: width 0.3s ease;
       border-radius: 1px;
     }
     nav a:hover {
-      color: #00ffff;
+      color: #a2cffe;
     }
     nav a:hover::after,
     nav a.active::after {
@@ -86,26 +86,26 @@
     }
     section {
       padding: 80px 0;
-      border-bottom: 1px solid #111;
+      border-bottom: 1px solid #d0dbf7;
     }
     h1 {
       font-weight: 900;
       font-size: 3rem;
       margin-bottom: 20px;
-      color: #00ffff;
-      text-shadow: 0 0 6px #00bfff;
+      color: #1e40af;
+      text-shadow: 0 0 6px #93c5fd;
     }
     h2 {
       font-size: 2.5rem;
       margin-bottom: 15px;
-      color: #00bfff;
-      text-shadow: 0 0 5px #00ffff;
+      color: #2563eb;
+      text-shadow: 0 0 5px #a5b4fc;
     }
     p {
       font-size: 1.2rem;
       line-height: 1.6;
       max-width: 700px;
-      color: #aad8ffcc;
+      color: #334e7b;
     }
 
     /* Gallery styles */
@@ -118,7 +118,7 @@
     .gallery-grid img {
       width: 100%;
       border-radius: 12px;
-      box-shadow: 0 0 15px #00bfff66;
+      box-shadow: 0 0 15px #3b82f666;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       object-fit: cover;
@@ -126,7 +126,7 @@
     }
     .gallery-grid img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px #00ffffcc;
+      box-shadow: 0 0 30px #a2cffecc;
     }
 
     /* Contact form */
@@ -138,10 +138,10 @@
       gap: 15px;
     }
     input, textarea {
-      background: #111;
-      border: 2px solid #00bfff;
+      background: #dbe9ff;
+      border: 2px solid #3b82f6;
       border-radius: 8px;
-      color: #00bfff;
+      color: #1e40af;
       padding: 12px 15px;
       font-size: 1rem;
       resize: vertical;
@@ -149,13 +149,13 @@
     }
     input:focus, textarea:focus {
       outline: none;
-      border-color: #00ffff;
-      box-shadow: 0 0 8px #00ffff;
+      border-color: #2563eb;
+      box-shadow: 0 0 8px #2563eb;
     }
     button {
-      background: linear-gradient(90deg, #0077ff, #00ffff);
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
       border: none;
-      color: #000;
+      color: #fff;
       font-weight: 700;
       font-size: 1.1rem;
       padding: 12px 20px;
@@ -165,18 +165,18 @@
       align-self: flex-start;
     }
     button:hover {
-      background: linear-gradient(90deg, #00ffff, #0077ff);
+      background: linear-gradient(90deg, #60a5fa, #3b82f6);
       transform: scale(1.05);
     }
 
     footer {
-      background: #000428;
-      color: #00bfff;
+      background: #00509e;
+      color: #cbe4ff;
       text-align: center;
       padding: 15px 0;
       font-size: 0.9rem;
       user-select: none;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.7);
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
     }
 
     /* Responsive tweaks */
@@ -220,7 +220,7 @@
 
     <section id="about" tabindex="-1">
       <h2>About Us</h2>
-      <p>CatDev Designs is a creative studio focused on delivering unique and dynamic visuals. Whether you need a fresh logo or animated profile picture shifts, we've got the skills to bring your vision to life.</p>
+      <p>CatDev Designs is a creative studio focused on delivering unique and dynamic visuals. Whether you need a fresh logo, profile pictures, or animated shift slides, we've got the skills to bring your vision to life.</p>
     </section>
 
     <section id="gallery" tabindex="-1">
@@ -237,16 +237,21 @@
 
     <section id="services" tabindex="-1">
       <h2>Our Services</h2>
-      <p>Logo design, PFP shift slides, animated graphics, and custom visual content made to fit your style perfectly.</p>
+      <p>Logo design, profile pictures, shift slides, animated graphics, and custom visual content made to fit your style perfectly.</p>
     </section>
 
     <section id="contacts" tabindex="-1">
       <h2>Contact Us</h2>
       <p>Got a design project? Reach out and let's chat about how we can help you stand out with killer logos and slick animations.</p>
-      <form id="contact-form">
+      <form 
+        action="https://formsubmit.co/devonhandler@outlook.com" 
+        method="POST"
+        target="_blank"
+      >
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <input type="hidden" name="_captcha" value="false" />
         <button type="submit">Send Message</button>
       </form>
     </section>
@@ -262,45 +267,35 @@
   </footer>
 
   <script>
-    // Smooth scroll with JS to handle active nav link highlighting
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href')));
+    // Highlight active nav link on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
 
-    function setActiveLink() {
-      let index = sections.length - 1;
-      for (let i = 0; i < sections.length; i++) {
-        const sectionTop = sections[i].getBoundingClientRect().top;
-        if (sectionTop > 80) {
-          index = i - 1;
-          break;
+    function activateNavLink() {
+      let scrollPos = window.scrollY + 100;
+      sections.forEach((section) => {
+        if (
+          scrollPos >= section.offsetTop &&
+          scrollPos < section.offsetTop + section.offsetHeight
+        ) {
+          navLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === section.id) {
+              link.classList.add('active');
+            }
+          });
         }
-      }
-      if(index < 0) index = 0;
-      navLinks.forEach(link => link.classList.remove('active'));
-      if(navLinks[index]) navLinks[index].classList.add('active');
+      });
     }
+    window.addEventListener('scroll', activateNavLink);
 
+    // Smooth scroll for nav links (for better browser support)
     navLinks.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth' });
-          // Focus for accessibility
-          targetSection.focus();
-        }
+        document.getElementById(targetId).scrollIntoView({behavior: 'smooth'});
       });
-    });
-
-    window.addEventListener('scroll', setActiveLink);
-    window.addEventListener('load', setActiveLink);
-
-    // Simple contact form handler (no backend)
-    document.getElementById('contact-form').addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Thanks for reaching out! We will get back to you soon.');
-      e.target.reset();
     });
   </script>
 </body>

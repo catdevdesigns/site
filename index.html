@@ -7,7 +7,6 @@
   <!-- Google Fonts Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
   <style>
-    /* Removed GothamPro @font-face */
     html {
       scroll-behavior: smooth;
     }
@@ -19,7 +18,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      scroll-padding-top: 80px; /* sticky header offset */
+      scroll-padding-top: 80px;
     }
     header {
       background: linear-gradient(90deg, #00509e, #3b82f6);
@@ -50,6 +49,7 @@
       display: flex;
       gap: 30px;
       flex-wrap: wrap;
+      align-items: center;
     }
     nav a {
       color: #cbe4ff;
@@ -77,6 +77,23 @@
     nav a.active::after {
       width: 100%;
     }
+
+    .login-button {
+      background: #2563eb;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 20px;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .login-button:hover {
+      background: #1e40af;
+      transform: scale(1.05);
+    }
+
     main {
       flex-grow: 1;
       padding: 60px 40px;
@@ -107,28 +124,6 @@
       color: #334e7b;
     }
 
-    /* Gallery styles */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #3b82f666;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      object-fit: cover;
-      aspect-ratio: 4 / 3;
-    }
-    .gallery-grid img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px #a2cffecc;
-    }
-
-    /* Contact form */
     form {
       margin-top: 30px;
       max-width: 500px;
@@ -178,10 +173,10 @@
       box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
     }
 
-    /* Responsive tweaks */
     @media (max-width: 768px) {
       header {
         padding: 15px 20px;
+        flex-wrap: wrap;
       }
       main {
         padding: 40px 20px;
@@ -204,10 +199,10 @@
     <nav>
       <a href="#home" class="nav-link active">Home</a>
       <a href="#about" class="nav-link">About</a>
-      <a href="#gallery" class="nav-link">Gallery</a>
       <a href="#services" class="nav-link">Services</a>
       <a href="#contacts" class="nav-link">Contacts</a>
       <a href="#team" class="nav-link">Team</a>
+      <a href="https://catdevdesigns.github.io/site/login" class="login-button">Login</a>
     </nav>
   </header>
 
@@ -220,18 +215,6 @@
     <section id="about" tabindex="-1">
       <h2>About Us</h2>
       <p>CatDev Designs is a creative studio focused on delivering unique and dynamic visuals. Whether you need a fresh logo, profile pictures, or animated shift slides, we've got the skills to bring your vision to life.</p>
-    </section>
-
-    <section id="gallery" tabindex="-1">
-      <h2>Gallery</h2>
-      <div class="gallery-grid">
-        <img src="images/design1.jpg" alt="Design 1" />
-        <img src="images/design2.jpg" alt="Design 2" />
-        <img src="images/design3.jpg" alt="Design 3" />
-        <img src="images/design4.jpg" alt="Design 4" />
-        <img src="images/design5.jpg" alt="Design 5" />
-        <img src="images/design6.jpg" alt="Design 6" />
-      </div>
     </section>
 
     <section id="services" tabindex="-1">
@@ -255,7 +238,7 @@
       </form>
     </section>
 
-    <section id="team" tabindex="-1">
+        <section id="team" tabindex="-1">
       <h2>Meet the Team</h2>
       <p>Our talented designers and animators work together to create visuals that capture attention and leave a lasting impression.</p>
     </section>
@@ -268,7 +251,7 @@
   <script>
     // Highlight active nav link on scroll
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('nav a.nav-link');
 
     function activateNavLink() {
       let scrollPos = window.scrollY + 100;
@@ -288,12 +271,15 @@
     }
     window.addEventListener('scroll', activateNavLink);
 
-    // Smooth scroll for nav links (for better browser support)
+    // Smooth scroll
     navLinks.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
-        document.getElementById(targetId).scrollIntoView({behavior: 'smooth'});
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
       });
     });
   </script>

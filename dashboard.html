@@ -3,31 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <title>Dashboard - CatDev Designs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(135deg, #16a34a, #4ade80);
-      height: 100vh;
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
+      height: 100vh;
+      color: #fff;
       text-align: center;
     }
     h1 {
-      font-size: 2rem;
-      background: #ffffff20;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(8px);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    #logoutBtn {
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      background: #1e40af;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+    #logoutBtn:hover {
+      background: #2563eb;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <h1>Hi there, welcome to the testing page.</h1>
+  <script>
+    // Check if user is logged in
+    if (sessionStorage.getItem("loggedIn") !== "true") {
+      // Not logged in, redirect to login page
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <h1>Hi there! Welcome to the testing page.</h1>
+  <button id="logoutBtn">Logout</button>
+
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      // Clear login status and redirect to login page
+      sessionStorage.removeItem("loggedIn");
+      window.location.href = "login.html";
+    });
+  </script>
 </body>
 </html>

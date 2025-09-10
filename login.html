@@ -102,7 +102,9 @@
       const message = document.getElementById("message");
 
       if (username === "Admin" && password === "123456789") {
+        // Store login status in sessionStorage
         sessionStorage.setItem("loggedIn", "true");
+
         message.textContent = "✅ Login successful! Redirecting...";
         message.className = "message success";
 

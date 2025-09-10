@@ -8,25 +8,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --color-bg-light: #f0f4ff;
-      --color-text-light: #004a99;
-      --color-primary-light: #00509e;
-      --color-secondary-light: #3b82f6;
-      --color-accent-light: #2563eb;
-      --color-nav-link-light: #cbe4ff;
-      --color-nav-link-hover-light: #a2cffe;
-      --color-input-bg-light: #dbe9ff;
-      --color-input-border-light: #3b82f6;
+      --bg-light: #f0f4ff;
+      --text-light: #004a99;
+      --header-bg-light: linear-gradient(90deg, #00509e, #3b82f6);
+      --link-light: #cbe4ff;
+      --link-hover-light: #a2cffe;
 
-      --color-bg-dark: #121217;
-      --color-text-dark: #cbe4ff;
-      --color-primary-dark: #3b82f6;
-      --color-secondary-dark: #2563eb;
-      --color-accent-dark: #60a5fa;
-      --color-nav-link-dark: #a2cffe;
-      --color-nav-link-hover-dark: #cbe4ff;
-      --color-input-bg-dark: #1e293b;
-      --color-input-border-dark: #60a5fa;
+      --bg-dark: #1e293b;
+      --text-dark: #cbd5e1;
+      --header-bg-dark: linear-gradient(90deg, #1e40af, #2563eb);
+      --link-dark: #93c5fd;
+      --link-hover-dark: #bfdbfe;
     }
 
     html {
@@ -35,8 +27,8 @@
     body {
       margin: 0;
       font-family: 'Montserrat', Arial, sans-serif;
-      background-color: var(--color-bg-light);
-      color: var(--color-text-light);
+      background-color: var(--bg-light);
+      color: var(--text-light);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -44,11 +36,11 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
     body.dark {
-      background-color: var(--color-bg-dark);
-      color: var(--color-text-dark);
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
     header {
-      background: linear-gradient(90deg, var(--color-primary-light), var(--color-secondary-light));
+      background: var(--header-bg-light);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -60,8 +52,8 @@
       transition: background 0.3s ease;
     }
     body.dark header {
-      background: linear-gradient(90deg, var(--color-primary-dark), var(--color-secondary-dark));
-      box-shadow: 0 2px 10px rgba(255,255,255,0.15);
+      background: var(--header-bg-dark);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.5);
     }
     .logo {
       height: 60px;
@@ -69,12 +61,9 @@
       object-fit: contain;
       border-radius: 50%;
       background: none;
-      filter: drop-shadow(0 0 4px var(--color-secondary-light));
+      filter: drop-shadow(0 0 4px #3b82f6);
       cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-    body.dark .logo {
-      filter: drop-shadow(0 0 6px var(--color-accent-dark));
+      transition: transform 0.3s ease;
     }
     .logo:hover {
       transform: scale(1.1) rotate(10deg);
@@ -87,15 +76,12 @@
       align-items: center;
     }
     nav a {
-      color: var(--color-nav-link-light);
+      color: var(--link-light);
       text-decoration: none;
       font-weight: 600;
       font-size: 1.1rem;
       position: relative;
       transition: color 0.3s ease;
-    }
-    body.dark nav a {
-      color: var(--color-nav-link-dark);
     }
     nav a::after {
       content: '';
@@ -104,26 +90,25 @@
       height: 2px;
       left: 0;
       bottom: -5px;
-      background: var(--color-nav-link-hover-light);
+      background: #a2cffe;
       transition: width 0.3s ease;
       border-radius: 1px;
     }
-    body.dark nav a::after {
-      background: var(--color-nav-link-hover-dark);
-    }
     nav a:hover {
-      color: var(--color-nav-link-hover-light);
-    }
-    body.dark nav a:hover {
-      color: var(--color-nav-link-hover-dark);
+      color: var(--link-hover-light);
     }
     nav a:hover::after,
     nav a.active::after {
       width: 100%;
     }
-
+    body.dark nav a {
+      color: var(--link-dark);
+    }
+    body.dark nav a:hover {
+      color: var(--link-hover-dark);
+    }
     .login-button {
-      background: var(--color-accent-light);
+      background: #2563eb;
       color: #fff;
       padding: 10px 20px;
       font-size: 1rem;
@@ -133,66 +118,53 @@
       margin-left: 20px;
       transition: background 0.3s ease, transform 0.2s ease;
     }
-    body.dark .login-button {
-      background: var(--color-accent-dark);
-    }
     .login-button:hover {
       background: #1e40af;
       transform: scale(1.05);
     }
-    body.dark .login-button:hover {
-      background: #3b82f6;
-    }
-
     main {
       flex-grow: 1;
       padding: 60px 40px;
       max-width: 1200px;
       margin: 0 auto;
-      transition: color 0.3s ease;
     }
     section {
       padding: 80px 0;
       border-bottom: 1px solid #d0dbf7;
-      transition: border-color 0.3s ease;
     }
     body.dark section {
-      border-color: #374151;
+      border-color: #334155;
     }
     h1 {
       font-weight: 900;
       font-size: 3rem;
       margin-bottom: 20px;
-      color: var(--color-accent-light);
+      color: #1e40af;
       text-shadow: 0 0 6px #93c5fd;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     body.dark h1 {
-      color: var(--color-accent-dark);
-      text-shadow: 0 0 6px #60a5fa;
+      color: #bfdbfe;
+      text-shadow: 0 0 8px #60a5fa;
     }
     h2 {
       font-size: 2.5rem;
       margin-bottom: 15px;
-      color: var(--color-accent-light);
+      color: #2563eb;
       text-shadow: 0 0 5px #a5b4fc;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     body.dark h2 {
-      color: var(--color-accent-dark);
-      text-shadow: 0 0 5px #60a5fa;
+      color: #93c5fd;
+      text-shadow: 0 0 7px #a5b4fc;
     }
     p {
       font-size: 1.2rem;
       line-height: 1.6;
       max-width: 700px;
       color: #334e7b;
-      transition: color 0.3s ease;
     }
     body.dark p {
-      color: #cbe4ff;
+      color: #cbd5e1;
     }
-
     form {
       margin-top: 30px;
       max-width: 500px;
@@ -201,10 +173,10 @@
       gap: 15px;
     }
     input, textarea {
-      background: var(--color-input-bg-light);
-      border: 2px solid var(--color-input-border-light);
+      background: #dbe9ff;
+      border: 2px solid #3b82f6;
       border-radius: 8px;
-      color: var(--color-accent-light);
+      color: #1e40af;
       padding: 12px 15px;
       font-size: 1rem;
       resize: vertical;
@@ -212,20 +184,16 @@
     }
     input:focus, textarea:focus {
       outline: none;
-      border-color: var(--color-accent-light);
-      box-shadow: 0 0 8px var(--color-accent-light);
+      border-color: #2563eb;
+      box-shadow: 0 0 8px #2563eb;
     }
     body.dark input, body.dark textarea {
-      background: var(--color-input-bg-dark);
-      border: 2px solid var(--color-input-border-dark);
-      color: var(--color-text-dark);
-    }
-    body.dark input:focus, body.dark textarea:focus {
-      border-color: var(--color-accent-dark);
-      box-shadow: 0 0 8px var(--color-accent-dark);
+      background: #334155;
+      border-color: #60a5fa;
+      color: #bfdbfe;
     }
     button {
-      background: linear-gradient(90deg, var(--color-secondary-light), var(--color-accent-light));
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
       border: none;
       color: #fff;
       font-weight: 700;
@@ -237,19 +205,12 @@
       align-self: flex-start;
     }
     button:hover {
-      background: linear-gradient(90deg, var(--color-accent-light), var(--color-secondary-light));
+      background: linear-gradient(90deg, #60a5fa, #3b82f6);
       transform: scale(1.05);
     }
-    body.dark button {
-      background: linear-gradient(90deg, var(--color-secondary-dark), var(--color-accent-dark));
-    }
-    body.dark button:hover {
-      background: linear-gradient(90deg, var(--color-accent-dark), var(--color-secondary-dark));
-    }
-
     footer {
-      background: var(--color-primary-light);
-      color: var(--color-nav-link-light);
+      background: #00509e;
+      color: #cbe4ff;
       text-align: center;
       padding: 15px 0;
       font-size: 0.9rem;
@@ -258,33 +219,26 @@
       transition: background 0.3s ease, color 0.3s ease;
     }
     body.dark footer {
-      background: var(--color-primary-dark);
-      color: var(--color-nav-link-dark);
-      box-shadow: 0 -2px 10px rgba(255,255,255,0.15);
+      background: #1e40af;
+      color: #bfdbfe;
+      box-shadow: 0 -2px 15px rgba(0,0,0,0.5);
     }
 
-    .theme-toggle {
-      background: transparent;
-      border: 2px solid var(--color-nav-link-light);
-      color: var(--color-nav-link-light);
-      padding: 5px 12px;
+    /* Dark/Light toggle button */
+    #darkModeToggle {
+      background: #2563eb;
+      border: none;
+      color: white;
+      padding: 8px 16px;
       border-radius: 20px;
-      cursor: pointer;
       font-weight: 600;
-      font-size: 0.9rem;
-      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin-left: 15px;
     }
-    .theme-toggle:hover {
-      background: var(--color-nav-link-light);
-      color: var(--color-primary-light);
-    }
-    body.dark .theme-toggle {
-      border-color: var(--color-nav-link-dark);
-      color: var(--color-nav-link-dark);
-    }
-    body.dark .theme-toggle:hover {
-      background: var(--color-nav-link-dark);
-      color: var(--color-primary-dark);
+    #darkModeToggle:hover {
+      background: #1e40af;
+      transform: scale(1.05);
     }
 
     @media (max-width: 768px) {
@@ -317,7 +271,7 @@
       <a href="#contacts" class="nav-link">Contacts</a>
       <a href="#team" class="nav-link">Team</a>
       <a href="login.html" class="login-button">Login</a>
-      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">Dark Mode</button>
+      <button id="darkModeToggle" aria-label="Toggle Dark Mode">Dark Mode</button>
     </nav>
   </header>
 
@@ -340,113 +294,100 @@
     <section id="contacts" tabindex="-1">
       <h2>Contact Us</h2>
       <p>Got a design project? Reach out and let's chat about how we can help you stand out with killer logos and slick animations.</p>
-      <form id="contactForm" novalidate>
-        <input type="text" name="name" placeholder="Your Name" required />
-        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+      <form id="messageForm">
+        <input type="text" name="name" id="name" placeholder="Your Name" required />
+        <textarea name="message" id="message" placeholder="Your Message" rows="4" required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </section>
 
     <section id="team" tabindex="-1">
       <h2>Meet the Team</h2>
-      <p>Our talented designers and animators work together to create visuals that capture attention and leave a lasting impression.</p>
+      <p>Our team is made up of passionate designers and animators who love crafting memorable visuals for your brand.</p>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 CatDev Designs. All rights reserved.
+    <p>© 2023 CatDev Designs — All rights reserved</p>
   </footer>
 
+  <!-- Supabase JS -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+
   <script>
     // Initialize Supabase
     const supabaseUrl = 'https://mrhpzlverdybimwbnuvp.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1yaHB6bHZlcmR5Ymltd2JudXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1MjgyMzksImV4cCI6MjA3MzEwNDIzOX0.3iw8xiv7G0Oq56_RGN7WdUYCAvv4GVzXPskfaLfj2SY';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1yaHB6bHZlcmR5Ymltd2JudXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1MjgyMzksImV4cCI6MjA3MzEwNDIzOX0.3iw8xiv7G0Oq56_RGN7WdUYCAvv4GVzXPskfaLfj2SY';
 
-    // Form submission handler
-    const form = document.getElementById('contactForm');
+    const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+    const form = document.getElementById('messageForm');
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const name = form.name.value.trim();
-      const message = form.message.value.trim();
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
 
       if (!name || !message) {
-        alert('Please fill in all fields.');
+        alert('Please fill out both fields.');
         return;
       }
 
-      // Insert into Supabase table 'messages'
+      // Insert the message into Supabase
       const { data, error } = await supabase
         .from('messages')
-        .insert([{ name, message }]);
+        .insert([{ name: name, content: message }]);
 
       if (error) {
-        console.error('Error inserting data:', error);
-        alert('Failed to send your message. Please try again.');
+        console.error('Error inserting message:', error);
+        alert('Failed to send message. Please try again.');
       } else {
-        alert('Message sent successfully! Thank you.');
+        alert('Message sent successfully!');
         form.reset();
       }
     });
 
-    // Highlight active nav link on scroll
+    // Dark mode toggle
+    const toggleBtn = document.getElementById('darkModeToggle');
+
+    // Load preference from localStorage or default light
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark');
+      toggleBtn.textContent = 'Light Mode';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if (document.body.classList.contains('dark')) {
+        toggleBtn.textContent = 'Light Mode';
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        toggleBtn.textContent = 'Dark Mode';
+        localStorage.setItem('darkMode', 'false');
+      }
+    });
+
+    // Optional: Active nav link highlight on scroll
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav a.nav-link');
 
-    function activateNavLink() {
-      let scrollPos = window.scrollY + 100;
-      sections.forEach((section) => {
-        if (
-          scrollPos >= section.offsetTop &&
-          scrollPos < section.offsetTop + section.offsetHeight
-        ) {
-          navLinks.forEach((link) => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === section.id) {
-              link.classList.add('active');
-            }
-          });
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
         }
       });
-    }
-    window.addEventListener('scroll', activateNavLink);
 
-    // Smooth scroll
-    navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
         }
       });
     });
-
-    // Dark/Light mode toggle
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-
-    function applyTheme(theme) {
-      if (theme === 'dark') {
-        document.body.classList.add('dark');
-        themeToggleBtn.textContent = 'Light Mode';
-      } else {
-        document.body.classList.remove('dark');
-        themeToggleBtn.textContent = 'Dark Mode';
-      }
-      localStorage.setItem('theme', theme);
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-      const newTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
-      applyTheme(newTheme);
-    });
-
-    // Apply saved theme on page load
-    applyTheme(currentTheme);
   </script>
 </body>
 </html>

@@ -77,45 +77,46 @@
       color: #fff;
     }
     .message.success {
-      color: #4ade80; /* green */
+      color: #4ade80;
     }
     .message.error {
-      color: #f87171; /* red */
+      color: #f87171;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
     <h2>Login</h2>
-    <form id="loginForm" onsubmit="return false;">
-      <input type="text" placeholder="Username" name="username" id="username" required />
-      <input type="password" placeholder="Password" name="password" id="password" required />
-      <button type="submit" onclick="validateLogin()">Login</button>
+    <form id="loginForm">
+      <input type="text" placeholder="Username" id="username" required />
+      <input type="password" placeholder="Password" id="password" required />
+      <button type="submit">Login</button>
     </form>
     <div id="message" class="message"></div>
     <a href="index.html" class="back-link">← Back to Home</a>
   </div>
 
   <script>
-    function validateLogin() {
+    // Secure frontend login simulation (not for production)
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Prevent form from submitting normally
+
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value;
-
       const message = document.getElementById("message");
 
       if (username === "Admin" && password === "123456789") {
         message.textContent = "✅ Login successful! Redirecting...";
         message.className = "message success";
 
-        // Simulate redirect after 1.5s
         setTimeout(() => {
-          window.location.href = "dashboard.html"; // Change this to your target page
-        }, 1500);
+          window.location.href = "dashboard.html"; // Redirect to dashboard
+        }, 1200);
       } else {
         message.textContent = "❌ Invalid username or password.";
         message.className = "message error";
       }
-    }
+    });
   </script>
 </body>
 </html>

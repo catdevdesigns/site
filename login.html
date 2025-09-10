@@ -30,32 +30,31 @@
       margin-bottom: 30px;
       font-size: 2rem;
     }
-   input {
-  width: 80%;
-  padding: 12px 15px;
-  border: none;
-  border-radius: 10px;
-  margin: 0 auto 20px;
-  font-size: 1rem;
-  background: #e0f0ff;
-  color: #1e40af;
-  display: block;
-}
-
-button {
-  width: 80%;
-  padding: 12px;
-  border: none;
-  border-radius: 30px;
-  background: #1e40af;
-  color: white;
-  font-weight: bold;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  margin: 0 auto;
-  display: block;
-}
+    input {
+      width: 80%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 10px;
+      margin: 0 auto 20px;
+      font-size: 1rem;
+      background: #e0f0ff;
+      color: #1e40af;
+      display: block;
+    }
+    button {
+      width: 80%;
+      padding: 12px;
+      border: none;
+      border-radius: 30px;
+      background: #1e40af;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin: 0 auto;
+      display: block;
+    }
     button:hover {
       background: #2563eb;
       transform: scale(1.03);
@@ -71,17 +70,52 @@ button {
     .back-link:hover {
       text-decoration: underline;
     }
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .message.success {
+      color: #4ade80; /* green */
+    }
+    .message.error {
+      color: #f87171; /* red */
+    }
   </style>
 </head>
 <body>
   <div class="login-container">
     <h2>Login</h2>
-    <form>
-      <input type="text" placeholder="Username" name="username" required />
-      <input type="password" placeholder="Password" name="password" required />
-      <button type="submit">Login</button>
+    <form id="loginForm" onsubmit="return false;">
+      <input type="text" placeholder="Username" name="username" id="username" required />
+      <input type="password" placeholder="Password" name="password" id="password" required />
+      <button type="submit" onclick="validateLogin()">Login</button>
     </form>
-   <a href="index.html" class="back-link">← Back to Home</a>
+    <div id="message" class="message"></div>
+    <a href="index.html" class="back-link">← Back to Home</a>
   </div>
+
+  <script>
+    function validateLogin() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      const message = document.getElementById("message");
+
+      if (username === "Admin" && password === "123456789") {
+        message.textContent = "✅ Login successful! Redirecting...";
+        message.className = "message success";
+
+        // Simulate redirect after 1.5s
+        setTimeout(() => {
+          window.location.href = "dashboard.html"; // Change this to your target page
+        }, 1500);
+      } else {
+        message.textContent = "❌ Invalid username or password.";
+        message.className = "message error";
+      }
+    }
+  </script>
 </body>
 </html>

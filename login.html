@@ -6,42 +6,53 @@
   <title>Login - CatDev Designs</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
       font-family: 'Montserrat', Arial, sans-serif;
       background: linear-gradient(135deg, #3b82f6, #60a5fa);
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       color: #fff;
     }
     .login-container {
-      background: #ffffff20;
+      background: rgba(255 255 255 / 0.125);
       padding: 40px 30px;
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
       max-width: 400px;
       width: 100%;
       backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
     .login-container h2 {
-      text-align: center;
-      margin-bottom: 30px;
+      margin: 0 0 10px 0;
       font-size: 2rem;
     }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
     input {
-      width: 100%;
       padding: 12px 15px;
       border: none;
       border-radius: 10px;
-      margin-bottom: 20px;
       font-size: 1rem;
       background: #e0f0ff;
       color: #1e40af;
+      outline-offset: 2px;
+      outline-color: transparent;
+      transition: outline-color 0.3s ease;
+    }
+    input:focus {
+      outline-color: #2563eb;
+      background: #cfe4ff;
     }
     button {
-      width: 100%;
       padding: 12px;
       border: none;
       border-radius: 30px;
@@ -57,8 +68,7 @@
       transform: scale(1.03);
     }
     .back-link {
-      display: block;
-      margin-top: 20px;
+      margin-top: 10px;
       text-align: center;
       color: #dbeafe;
       text-decoration: none;
@@ -69,9 +79,9 @@
     }
     .message {
       text-align: center;
-      margin-bottom: 15px;
       font-weight: bold;
       font-size: 1rem;
+      height: 1.2em;
     }
     .message.success {
       color: #4ade80;

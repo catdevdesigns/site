@@ -6,86 +6,86 @@
   <title>Login - CatDev Designs</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg-color-light: #e0f2ff;
+      --bg-color-dark: #0f172a;
+      --box-bg-light: #ffffff50;
+      --box-bg-dark: #1e293b80;
+      --text-light: #1e3a8a;
+      --text-dark: #f1f5f9;
+      --btn-bg: #1e40af;
+      --btn-bg-hover: #2563eb;
     }
 
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: #fff;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      color: var(--text-light);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.dark {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: var(--text-dark);
     }
 
     .login-container {
-      background: #ffffff20;
-      padding: 40px 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      max-width: 400px;
+      background: var(--box-bg-light);
+      backdrop-filter: blur(12px);
+      padding: 60px 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       width: 100%;
-      backdrop-filter: blur(10px);
-      animation: fadeIn 0.6s ease-in-out;
+      max-width: 480px;
+      transition: background 0.4s;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    body.dark .login-container {
+      background: var(--box-bg-dark);
     }
 
     .login-container h2 {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 2rem;
-      color: #fff;
+      margin-bottom: 40px;
+      font-size: 2.2rem;
     }
 
     form {
       display: flex;
       flex-direction: column;
+      gap: 20px;
     }
 
     input {
-      width: 100%;
-      padding: 12px 15px;
+      padding: 15px;
+      font-size: 1rem;
       border: none;
       border-radius: 10px;
-      margin-bottom: 20px;
-      font-size: 1rem;
-      background: #e0f0ff;
-      color: #1e40af;
+      background-color: #e0f0ff;
+      color: var(--text-light);
       text-align: left;
-      transition: border 0.2s ease, box-shadow 0.2s ease;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark input {
+      background-color: #334155;
+      color: var(--text-dark);
     }
 
     input::placeholder {
       color: #94a3b8;
     }
 
-    input:focus {
-      outline: none;
-      border: 2px solid #1e40af;
-      background: #ffffff;
-      box-shadow: 0 0 5px rgba(30, 64, 175, 0.5);
-    }
-
     button {
-      width: 100%;
-      padding: 12px;
+      padding: 15px;
       border: none;
       border-radius: 30px;
-      background: #1e40af;
+      background: var(--btn-bg);
       color: white;
       font-weight: bold;
       font-size: 1.1rem;
@@ -95,17 +95,17 @@
     }
 
     button:hover {
-      background: #2563eb;
+      background: var(--btn-bg-hover);
       transform: scale(1.03);
     }
 
     .back-link {
-      display: block;
       margin-top: 20px;
       text-align: center;
-      color: #dbeafe;
-      text-decoration: none;
+      display: block;
       font-size: 0.95rem;
+      color: inherit;
+      text-decoration: none;
     }
 
     .back-link:hover {
@@ -114,7 +114,6 @@
 
     .message {
       text-align: center;
-      margin-bottom: 15px;
       font-weight: bold;
       font-size: 1rem;
     }
@@ -127,18 +126,33 @@
       color: #f87171;
     }
 
-    @media (max-width: 480px) {
+    .theme-toggle {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .theme-toggle button {
+      background: none;
+      border: 2px solid currentColor;
+      padding: 8px 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: inherit;
+    }
+
+    .theme-toggle button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 500px) {
       .login-container {
-        padding: 30px 20px;
-        border-radius: 12px;
+        padding: 40px 25px;
+        max-width: 90%;
       }
 
       .login-container h2 {
-        font-size: 1.5rem;
-      }
-
-      button {
-        font-size: 1rem;
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -153,9 +167,14 @@
       <button type="submit">Login</button>
     </form>
     <a href="index.html" class="back-link">← Back to Home</a>
+
+    <div class="theme-toggle">
+      <button id="toggleTheme">Toggle Dark / Light</button>
+    </div>
   </div>
 
   <script>
+    // Login logic
     document.getElementById("loginForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -176,6 +195,12 @@
         message.textContent = "❌ Invalid username or password.";
         message.className = "message error";
       }
+    });
+
+    // Theme toggle
+    const toggleBtn = document.getElementById("toggleTheme");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
     });
   </script>
 </body>

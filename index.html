@@ -207,20 +207,30 @@
       background: linear-gradient(90deg, #60a5fa, #3b82f6);
       transform: scale(1.05);
     }
+
     footer {
       background: #00509e;
-      color: #ffffff;
+      color: #ffffff; /* White text in both light and dark mode */
       text-align: center;
       padding: 15px 0;
       font-size: 0.9rem;
       user-select: none;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
       transition: background 0.3s ease, color 0.3s ease;
     }
+
     body.dark footer {
       background: #1e40af;
-      color: #bfdbfe;
-      box-shadow: 0 -2px 15px rgba(0,0,0,0.5);
+      color: #ffffff; /* White text in dark mode */
+      box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    footer p {
+      color: #ffffff; /* Ensures text is white in both light and dark mode */
+    }
+
+    body.dark footer p {
+      color: #ffffff; /* White text in dark mode */
     }
 
     /* Dark/Light toggle button */

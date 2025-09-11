@@ -6,258 +6,163 @@
   <title>CatDev Designs</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg-light: #f0f4ff;
-      --text-light: #004a99;
-      --header-bg-light: linear-gradient(90deg, #00509e, #3b82f6);
-      --link-light: #cbe4ff;
-      --link-hover-light: #a2cffe;
+   :root {
+  --bg-color-light: #e0f2ff;
+  --bg-color-dark: #0f172a;
+  --box-bg-light: #ffffff50;
+  --box-bg-dark: #1e293b80;
+  --text-light: #1e3a8a;
+  --text-dark: #f1f5f9;
+  --btn-bg: #1e40af;
+  --btn-bg-hover: #2563eb;
+}
 
-      --bg-dark: #1e293b;
-      --text-dark: #cbd5e1;
-      --header-bg-dark: linear-gradient(90deg, #1e40af, #2563eb);
-      --link-dark: #93c5fd;
-      --link-hover-dark: #bfdbfe;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      margin: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      scroll-padding-top: 80px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    body.dark {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-    header {
-      background: var(--header-bg-light);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      transition: background 0.3s ease;
-    }
-    body.dark header {
-      background: var(--header-bg-dark);
-      box-shadow: 0 2px 15px rgba(0,0,0,0.5);
-    }
-    .logo {
-      height: 60px;
-      width: 60px;
-      object-fit: contain;
-      border-radius: 50%;
-      background: none;
-      filter: drop-shadow(0 0 4px #3b82f6);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .logo:hover {
-      transform: scale(1.1) rotate(10deg);
-    }
-    nav {
-      margin-left: auto;
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    nav a {
-      color: var(--link-light);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      left: 0;
-      bottom: -5px;
-      background: #a2cffe;
-      transition: width 0.3s ease;
-      border-radius: 1px;
-    }
-    nav a:hover {
-      color: var(--link-hover-light);
-    }
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
-    body.dark nav a {
-      color: var(--link-dark);
-    }
-    body.dark nav a:hover {
-      color: var(--link-hover-dark);
-    }
-    .login-button {
-      background: #2563eb;
-      color: #fff;
-      padding: 10px 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 20px;
-      text-decoration: none;
-      margin-left: 20px;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-    .login-button:hover {
-      background: #1e40af;
-      transform: scale(1.05);
-    }
-    main {
-      flex-grow: 1;
-      padding: 60px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    section {
-      padding: 80px 0;
-      border-bottom: 1px solid #d0dbf7;
-    }
-    body.dark section {
-      border-color: #334155;
-    }
-    h1 {
-      font-weight: 900;
-      font-size: 3rem;
-      margin-bottom: 20px;
-      color: #1e40af;
-      text-shadow: 0 0 6px #93c5fd;
-    }
-    body.dark h1 {
-      color: #bfdbfe;
-      text-shadow: 0 0 8px #60a5fa;
-    }
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: #2563eb;
-      text-shadow: 0 0 5px #a5b4fc;
-    }
-    body.dark h2 {
-      color: #93c5fd;
-      text-shadow: 0 0 7px #a5b4fc;
-    }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      max-width: 700px;
-      color: #334e7b;
-    }
-    body.dark p {
-      color: #cbd5e1;
-    }
-    form {
-      margin-top: 30px;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    input, textarea {
-      background: #dbe9ff;
-      border: 2px solid #3b82f6;
-      border-radius: 8px;
-      color: #1e40af;
-      padding: 12px 15px;
-      font-size: 1rem;
-      resize: vertical;
-      transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 8px #2563eb;
-    }
-    body.dark input, body.dark textarea {
-      background: #334155;
-      border-color: #60a5fa;
-      color: #bfdbfe;
-    }
-    button {
-      background: linear-gradient(90deg, #3b82f6, #60a5fa);
-      border: none;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 12px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      align-self: flex-start;
-    }
-    button:hover {
-      background: linear-gradient(90deg, #60a5fa, #3b82f6);
-      transform: scale(1.05);
-    }
-    footer {
-      background: #00509e;
-      color: #cbe4ff;
-      text-align: center;
-      padding: 15px 0;
-      font-size: 0.9rem;
-      user-select: none;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-    body.dark footer {
-      background: #1e40af;
-      color: #bfdbfe;
-      box-shadow: 0 -2px 15px rgba(0,0,0,0.5);
-    }
+body {
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background-color: var(--bg-color-light);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  scroll-padding-top: 80px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-    /* Dark/Light toggle button */
-    #darkModeToggle {
-      background: #2563eb;
-      border: none;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      margin-left: 15px;
-    }
-    #darkModeToggle:hover {
-      background: #1e40af;
-      transform: scale(1.05);
-    }
+body.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-dark);
+}
 
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 20px;
-        flex-wrap: wrap;
-      }
-      main {
-        padding: 40px 20px;
-      }
-      nav {
-        gap: 15px;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
-      h2 {
-        font-size: 2rem;
-      }
-    }
+header {
+  background: var(--btn-bg);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease;
+}
+
+body.dark header {
+  background: var(--btn-bg-hover);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+body.dark nav a {
+  color: var(--text-dark);
+}
+
+button {
+  background: var(--btn-bg);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: var(--btn-bg-hover);
+  transform: scale(1.05);
+}
+
+footer {
+  background: var(--btn-bg);
+  color: var(--text-light);
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  user-select: none;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark footer {
+  background: var(--btn-bg-hover);
+  color: var(--text-dark);
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Additional Styles for Boxes and Forms */
+input, textarea {
+  background: var(--box-bg-light);
+  border: 2px solid var(--btn-bg);
+  border-radius: 8px;
+  color: var(--text-light);
+  padding: 12px 15px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--btn-bg-hover);
+  box-shadow: 0 0 8px var(--btn-bg-hover);
+}
+
+body.dark input, body.dark textarea {
+  background: var(--box-bg-dark);
+  border-color: var(--btn-bg-hover);
+  color: var(--text-dark);
+}
+
+/* Dark Mode Toggle Button */
+#darkModeToggle {
+  background: var(--btn-bg);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-left: 15px;
+}
+
+#darkModeToggle:hover {
+  background: var(--btn-bg-hover);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+  }
+  main {
+    padding: 40px 20px;
+  }
+  nav {
+    gap: 15px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
   </style>
 </head>
 <body>

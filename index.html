@@ -6,6 +6,7 @@
   <title>CatDev Designs</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
   <style>
+    /* Global Styles (same as before) */
     :root {
       --bg-light: #f0f4ff;
       --text-light: #004a99;
@@ -251,29 +252,22 @@
 
     @media (max-width: 768px) {
       header {
-        padding: 15px 20px;
-        flex-wrap: wrap;
-      }
-      main {
-        padding: 40px 20px;
+        padding: 15px;
       }
       nav {
         gap: 15px;
       }
-      h1 {
-        font-size: 2.2rem;
-      }
-      h2 {
-        font-size: 2rem;
+      nav a {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="CatDev Designs logo" class="logo" />
+    <img src="logo.png" alt="CatDev Logo" class="logo" />
     <nav>
-      <a href="#home" class="nav-link active">Home</a>
+      <a href="#home" class="nav-link">Home</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#services" class="nav-link">Services</a>
       <a href="#contacts" class="nav-link">Contacts</a>
@@ -284,34 +278,33 @@
   </header>
 
   <main>
-    <section id="home" tabindex="-1">
+    <section id="home">
       <h1>Welcome to CatDev Designs</h1>
-      <p>We specialize in creating logos, profile pictures, shift slides, and other eye-catching designs to make your brand stand out. Our work is all about style, creativity, and making your ideas pop.</p>
+      <p>Your creative partner for digital designs. We craft beautiful websites that leave a lasting impression.</p>
     </section>
 
-    <section id="about" tabindex="-1">
+    <section id="about">
       <h2>About Us</h2>
-      <p>CatDev Designs is a creative studio focused on delivering unique and dynamic visuals. Whether you need a fresh logo, profile pictures, or animated shift slides, we've got the skills to bring your vision to life.</p>
+      <p>We are passionate about creating innovative and user-friendly designs. With years of experience, our team of experts brings your ideas to life!</p>
     </section>
 
-    <section id="services" tabindex="-1">
+    <section id="services">
       <h2>Our Services</h2>
-      <p>Logo design, profile pictures, shift slides, animated graphics, and custom visual content made to fit your style perfectly.</p>
+      <p>From web development to graphic design, we offer a range of services to help your business succeed online.</p>
     </section>
 
-    <section id="contacts" tabindex="-1">
+    <section id="contacts">
       <h2>Contact Us</h2>
-      <p>Got a design project? Reach out and let's chat about how we can help you stand out with killer logos and slick animations.</p>
-      <form id="messageForm">
-        <input type="text" name="name" id="name" placeholder="Your Name" required />
-        <textarea name="message" id="message" placeholder="Your Message" rows="4" required></textarea>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <textarea rows="4" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </section>
 
-    <section id="team" tabindex="-1">
-      <h2>Meet the Team</h2>
-      <p>Our team is made up of passionate designers and animators who love crafting memorable visuals for your brand.</p>
+    <section id="team">
+      <h2>Meet Our Team</h2>
+      <p>Our dedicated team is committed to bringing the best solutions for your digital needs.</p>
     </section>
   </main>
 
@@ -319,14 +312,7 @@
     <p>© 2025 CatDev Designs — All rights reserved</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
-    // Initialize Supabase
-    const supabaseUrl = 'https://your-supabase-url.supabase.co'; // Replace with your Supabase URL
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1yaHB6bHZlcmR5Ymltd2JudXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1MjgyMzksImV4cCI6MjA3MzEwNDIzOX0.3iw8xiv7G0Oq56_RGN7WdUYCAvv4GVzXPskfaLfj2SY'; // Replace with your Supabase anon key
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-    // Dark mode toggle logic
     const toggleBtn = document.getElementById('darkModeToggle');
 
     function setDarkMode(isDark) {
@@ -356,61 +342,6 @@
     toggleBtn.addEventListener('click', () => {
       const isDark = !document.body.classList.contains('dark');
       setDarkMode(isDark);
-    });
-
-    // Handle contact form submission
-    document.getElementById('messageForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-      
-      const name = document.getElementById('name').value;
-      const message = document.getElementById('message').value;
-      
-      const { data, error } = await supabase
-        .from('messages')
-        .insert([{ name, message }]);
-
-      if (error) {
-        alert('Error: ' + error.message);
-      } else {
-        alert('Message sent successfully!');
-      }
-    });
-
-    // Change the URL hash as you scroll through sections
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-
-    function changeLinkOnScroll() {
-      let currentSection = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (window.scrollY >= sectionTop) {
-          currentSection = section.getAttribute('id');
-        }
-      });
-      navLinks.forEach(link => {
-        if (link.getAttribute('href') === `#${currentSection}`) {
-          link.classList.add('active');
-          window.history.pushState({}, '', `#${currentSection}`);
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', changeLinkOnScroll);
-
-    // Smooth scroll and URL hash change on link click
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetSection = document.querySelector(link.getAttribute('href'));
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-        window.history.pushState({}, '', link.getAttribute('href'));
-      });
     });
   </script>
 </body>

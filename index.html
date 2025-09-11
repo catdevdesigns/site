@@ -90,7 +90,7 @@
       left: 0;
       bottom: -5px;
       background: #a2cffe;
-      transition: width 0.3s ease;
+      transition: width 0.6s ease; /* Slow down the underline transition */
       border-radius: 1px;
     }
     nav a:hover {
@@ -222,9 +222,6 @@
       color: #bfdbfe;
       box-shadow: 0 -2px 15px rgba(0,0,0,0.5);
     }
-    footer p {
-      color: #ffffff; /* Ensure copyright text is white */
-    }
 
     /* Dark/Light toggle button */
     #darkModeToggle {
@@ -348,31 +345,43 @@
       setDarkMode(isDark);
     });
 
-    // Active state and scrolling behavior
+    // Change the URL hash as you scroll through sections
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
 
+    function changeLinkOnScroll() {
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+          window.history.pushState({}, '', `#${currentSection}`);
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    // Smooth scroll and URL hash change on link click
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-        navLinks.forEach(link => link.classList.remove('active'));
-        e.target.classList.add('active');
+        e.preventDefault();
+        const targetSection = document.querySelector(link.getAttribute('href'));
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+        window.history.pushState({}, '', link.getAttribute('href'));
       });
     });
 
-    window.addEventListener('scroll', () => {
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-          navLinks.forEach(link => {
-            if (link.getAttribute('href').substring(1) === section.id) {
-              link.classList.add('active');
-            } else {
-              link.classList.remove('active');
-            }
-          });
-        }
-      });
-    });
+    // Run on scroll
+    window.addEventListener('scroll', changeLinkOnScroll);
   </script>
 </body>
 </html>

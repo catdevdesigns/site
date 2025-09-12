@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Us</title>
 
-  <!-- Load the Supabase SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.min.js"></script>
+  <!-- Load the Supabase SDK before any JavaScript code, using async and defer -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.min.js" defer></script>
 
 </head>
 <body>
@@ -18,34 +18,37 @@
     <button type="submit">Send Message</button>
   </form>
 
+  <!-- Your JavaScript logic -->
   <script>
     // Ensure Supabase client is initialized after the script is loaded
-    const supabaseUrl = 'https://mrhpzlverdybimwbnuvp.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1yaHB6bHZlcmR5Ymltd2JudXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1MjgyMzksImV4cCI6MjA3MzEwNDIzOX0.3iw8xiv7G0Oq56_RGN7WdUYCAvv4GVzXPskfaLfj2SY';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    window.addEventListener('load', function () {
+      const supabaseUrl = 'https://mrhpzlverdybimwbnuvp.supabase.co';
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1yaHB6bHZlcmR5Ymltd2JudXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1MjgyMzksImV4cCI6MjA3MzEwNDIzOX0.3iw8xiv7G0Oq56_RGN7WdUYCAvv4GVzXPskfaLfj2SY';
+      const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    // Form submission logic
-    const form = document.getElementById('contactForm');
-    
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      // Form submission logic
+      const form = document.getElementById('contactForm');
       
-      const name = document.getElementById('name').value;
-      const message = document.getElementById('message').value;
-      
-      // Insert data into Supabase 'messages' table
-      const { data, error } = await supabase
-        .from('messages') // Ensure this matches the name of your table in Supabase
-        .insert([
-          { name: name, message: message, created_at: new Date().toISOString() }
-        ]);
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const message = document.getElementById('message').value;
+        
+        // Insert data into Supabase 'messages' table
+        const { data, error } = await supabase
+          .from('messages') // Ensure this matches the name of your table in Supabase
+          .insert([
+            { name: name, message: message, created_at: new Date().toISOString() }
+          ]);
 
-      if (error) {
-        alert('Error submitting message: ' + error.message);
-      } else {
-        alert('Message sent successfully!');
-        form.reset(); // Clear form fields
-      }
+        if (error) {
+          alert('Error submitting message: ' + error.message);
+        } else {
+          alert('Message sent successfully!');
+          form.reset(); // Clear form fields
+        }
+      });
     });
   </script>
 </body>
